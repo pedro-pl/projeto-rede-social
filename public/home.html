@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="icon" href="assets/logo-site.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <title>GetPet | Home</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="containerHeader">
+                <div class="logo">
+                    <img src="assets/logo-adven-chat.png" alt="logo AdvenChat">
+                </div>
+    
+                <ul class="navBar">
+                        <li class="now">Início <span class="material-icons" id="iconHome">
+                            home
+                            </span></li>
+
+                        <li onclick="window.location='chat.html'">Chat <span class="material-icons" id="iconChat">
+                            question_answer
+                            </span></li>
+
+                        <li onclick="window.location='search.html'">Procurar <span class="material-icons" id="iconSearch">
+                            search
+                            </span></li>
+                        <li onclick="window.location='profile.html'">Perfil <span class="material-icons" id="iconProfile">
+                            person
+                            </span></li>
+                        <li onclick="limparSessao()">Sair <span class="material-icons" id="iconLogout">
+                            logout
+                            </span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="containerResults">
+            <div class="headerPublicar">
+                <div class="containerPublicar">
+                    <textarea name="publicacao" id="inputPublicacao" placeholder="Que tal publicar algo?!" maxlength="288"></textarea>
+                    <button class="btnPostar">Postar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/funcoes.js"></script>
