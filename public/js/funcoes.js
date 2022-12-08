@@ -4,7 +4,3 @@ function limparSessao() {
     // finalizarAguardar();
     window.location = "index.html";
 }
-
-function carregarImagem(){
-    
-}

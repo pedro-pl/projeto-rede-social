@@ -186,9 +186,10 @@ function entrar(){
                     resposta.json().then((json) => {
                         console.log(json);
                         console.log(JSON.stringify(json) + 'exibindo json stringfy');
-    
-                        sessionStorage.EMAIL_USUARIO = json.email;
+                        
+                        sessionStorage.ID_USUARIO = json.id;
                         sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.TELEFONE = json.telefone;
                         Swal.fire({
                             title: `<span style="font-family: Roboto, sans-serif;font-size: 2rem;color: #000">Entrando..`,

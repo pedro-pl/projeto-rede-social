@@ -9,13 +9,13 @@ var database = require("../database/config")
     return database.executar(instrucao);
 } */
 
-function trazer() {
+function trazerPubli() {
     var instrucao = `
-    select count(us.fk_parte_favorita) as parte_favorita, pb.parte as nome_livro
-    FROM usuario as us 
-    join partes_biblicas as pb
-    on us.fk_parte_favorita = pb.id
-    group by fk_parte_favorita;
+    SELECT pub.descricao, time_format(pub.horaPublicacao, '%h:%i') AS horaPublicacao, usu.nome 
+    FROM publicacao AS pub 
+    JOIN usuario AS usu
+    ON pub.fk_usuario = usu.id
+    ORDER BY pub.id DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -23,20 +23,20 @@ function trazer() {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function votar(parte, idUsuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function votar():", parte);
+function publicar(descricao, status, usuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function votar():");
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        update usuario set fk_parte_favorita = ${parte} where id = ${idUsuario};
+    INSERT INTO publicacao(descricao, statusPublicacao, fk_usuario) VALUES ("${descricao}", "${status}", ${usuario});
         `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 module.exports = {
-    trazer,
-    votar,
+    trazerPubli,
+    publicar,
     /* listar, */
 };

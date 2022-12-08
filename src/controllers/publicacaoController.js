@@ -1,4 +1,4 @@
-var votoModel = require("../models/votoModel");
+var publicacaoModel = require("../models/publicacaoModel");
 
 var sessoes = [];
 
@@ -24,12 +24,10 @@ function testar(req, res) {
         );
 } */
 
-function trazer(req, res) {
-    const limite_linhas = 7;
+function trazerPubli(req, res) {
+    console.log(`Recuperando oas últimas publicações`);
 
-    console.log(`Recuperando os últimos ${limite_linhas} votos`);
-
-    votoModel.trazer(limite_linhas).then(function (resultado) {
+    publicacaoModel.trazerPubli().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -42,18 +40,17 @@ function trazer(req, res) {
     });
     }
 
-function votar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var parte = req.body.parteServer;
-    var idUsuario = req.params.idUsuario;
+function publicar(req, res) {
+    var descricao = req.body.descricaoServer;
+    var status = req.body.statusServer;
+    var usuario = req.body.idUsuarioServer;
 
     // Faça as validações dos valores
-    if (parte == undefined) {
-        res.status(400).send("parte está undefined!");
+    if (descricao == undefined) {
+        res.status(400).send("descricao está undefined!");
     }
         
-        // Passe os valores como parâmetro e vá para o arquivo votoModel.js
-        votoModel.votar(parte, idUsuario)
+        publicacaoModel.publicar(descricao, status, usuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -67,12 +64,11 @@ function votar(req, res) {
                     );
                     res.status(500).json(erro.sqlMessage);
                 }
-            );
-    }
+    );
+}
 
 module.exports = {
-    trazer,
-    votar,
-    trazer,
+    trazerPubli,
+    publicar,
     testar,
 }

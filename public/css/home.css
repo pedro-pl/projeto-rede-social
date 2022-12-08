@@ -11,7 +11,7 @@ body {
 }
 
 .header {
-    background-color: #90e0ef;
+    background-color: #001233;
     width: 13%;
 }
 
@@ -51,10 +51,11 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
+    color: #e5e5e5;
 }
 
 .now {
-   border-left: 3px solid #000;
+   border-left: 3px solid #e5e5e5;
    padding: 3px 0 3px 5px;
 }
 
@@ -88,29 +89,45 @@ body {
     width: 88%;
     height: 100vh;
     display: flex;
+}
+
+.feed {
+    width: 88%;
+    background-color: #edf6f9;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.publicacoes {
+    width: 100%;
+    display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .headerPublicar {
     width: 100%;
-    height: 25vh;
+    height: 28vh;
     display: flex;
     justify-content: center;
     margin-top: 15px;
+    border-bottom: 2px solid #e5e5e5;
+    padding-bottom: 25px;
 }
 
 .containerPublicar {
     width: 90%;
-    height: 25vh;
+    height: 28vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-around;
     font-family: 'Roboto', sans-serif;
 }
 
 #inputPublicacao {
-    width: 70%;
-    height: 15vh;
+    width: 98%;
+    height: 20vh;
     outline: 0;
     resize: none;
     border-radius: 5px;
@@ -121,14 +138,112 @@ body {
     padding: 10px;
 }
 
+.publicar {
+    align-self: flex-end;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 .btnPostar {
     font-size: 1rem;
-    width: 15%;
+    width: 30%;
     border: 0;
-    padding: 5px;
+    padding: 7px;
     border-radius: 5px;
-    background-color: #42b72a;
+    background-color: #adb5bd;
     color: #fff;
     cursor: pointer;
-    margin: 10px 0 0 0;
+}
+
+.question {
+    margin: 0;
+    padding: 5px 5px 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#selection {
+    margin-left: 5px;
+}
+
+.options {
+    flex-direction: column;
+    position: absolute;
+    gap: 10px;
+    padding: 16px 10px 10px 10px;
+    background-color: #edf6f9;
+    width: 15.75rem;
+    box-shadow: 0 3px 6px #00000029, 0 1px 2px #0000003b;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.options p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.opt {
+    cursor: pointer;
+}
+
+.amigosOn {
+    width: 11%;
+    background-color: #fff;
+    border-left: 2px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.title {
+    font-size: 1.5rem;
+    color: #495057;
+    text-align: center;
+}
+
+.amigos {
+    width: 100%;
+    border-top: 2px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.amigos p {
+    font-size: 1.1rem;
+    margin-left: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.ball {
+    width: 8px;
+    height: 8px;
+    background-color: #42b72a;
+    border-radius: 50px;
+    margin-right: 7px;
+}
+
+.post {
+    width: 88%;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    box-shadow: 0 3px 6px #00000029, 0 1px 2px #0000003b;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
 }
