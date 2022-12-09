@@ -1,10 +1,10 @@
 var express = require("express");
 var router = express.Router();
 
-var testamentoController = require("../controllers/testamentoController");
+var amigosController = require("../controllers/amigosController");
 
-router.get("/trazer/", function (req, res) {
-    testamentoController.trazer(req, res);
+router.post("/exibirOn/", function (req, res) {
+    amigosController.exibirOn(req, res);
 });
 
 //Recebendo os dados do html e direcionando para a função votar de testamentoController.js

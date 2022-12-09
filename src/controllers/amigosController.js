@@ -1,5 +1,5 @@
 /* var votoModel = require("../models/votoModel"); */
-var testamentoModel = require("../models/testamentoModel");
+var amigosModel = require("../models/amigosModel");
 
 var sessoes = [];
 
@@ -8,29 +8,11 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
-/* function trazer(req, res) {
-    votoModel.trazer()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-} */
+function exibirOn(req, res) {
+    var usuario = req.body.idUsuarioServer
+    console.log(`Recuperando os últimos amigos online`);
 
-function trazer(req, res) {
-    const limite_linhas = 7;
-
-    console.log(`Recuperando os últimos ${limite_linhas} votos`);
-
-    testamentoModel.trazer(limite_linhas).then(function (resultado) {
+    amigosModel.exibirOn(usuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -72,7 +54,7 @@ function votar(req, res) {
     }
 
 module.exports = {
-    trazer,
+    exibirOn,
     votar,
     testar,
 }

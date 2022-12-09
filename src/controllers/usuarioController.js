@@ -7,8 +7,27 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
-function listar(req, res) {
-    usuarioModel.listar()
+function mudarStatusOn(req, res) {
+    var usuario = req.body.idUsuarioServer
+    usuarioModel.mudarStatusOn(usuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function mudarStatusOff(req, res) {
+    var usuario = req.body.idUsuarioServer
+    usuarioModel.mudarStatusOff(usuario)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -99,6 +118,7 @@ function cadastrar(req, res) {
 module.exports = {
     entrar,
     cadastrar,
-    listar,
+    mudarStatusOn,
+    mudarStatusOff,
     testar
 }

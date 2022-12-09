@@ -9,13 +9,17 @@ var database = require("../database/config")
     return database.executar(instrucao);
 } */
 
-function trazer() {
+function exibirOn(usuario) {
     var instrucao = `
-    select count(us.fk_partes_testamento) as parte_favorita, pt.nome as nome_testamento
-    FROM usuario as us
-    join partes_testamento as pt
-    on us.fk_partes_testamento = pt.id
-    group by fk_partes_testamento;
+    SELECT amg.nome AS nome 
+    FROM usuario AS usu 
+    JOIN amigos AS ami
+    ON ami.fk_usuario = usu.id
+    JOIN usuario AS amg
+    ON ami.fk_amigo = amg.id
+    WHERE ami.fk_usuario = ${usuario}
+    AND amg.statusUsuario = 'online'
+    ORDER BY amg.nome;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -36,7 +40,7 @@ function votar(voto, idUsuario) {
 }
 
 module.exports = {
-    trazer,
+    exibirOn,
     votar,
     /* listar, */
 };

@@ -1,9 +1,18 @@
 var database = require("../database/config")
 
-function listar() {
+function mudarStatusOn(usuario) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT email FROM usuario;
+        UPDATE usuario SET statusUsuario = 'online' where id = ${usuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function mudarStatusOff(usuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        UPDATE usuario SET statusUsuario = 'offline' where id = ${usuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -34,5 +43,6 @@ function cadastrar(nome, email, telefone, dtNascimento, senha) {
 module.exports = {
     entrar,
     cadastrar,
-    listar,
+    mudarStatusOn,
+    mudarStatusOff,
 };

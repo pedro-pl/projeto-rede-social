@@ -1,8 +1,25 @@
 var option;
+var ctd = 0;
+
+document.getElementById("fd").addEventListener("wheel", myFunction);
+
+function myFunction() {
+    opt.style.display = "none"
+    slct.style.borderRadius = "5px";
+    ctd = 0;
+}
 
 function select(){
-    slct.style.boxShadow= "0 3px 6px #00000029, 0 1px 2px #0000003b"
-    opt.style.display = "flex"
+    ctd++;
+
+    if(ctd > 1){
+        opt.style.display = "none"
+        slct.style.borderRadius = "5px";
+        ctd = 0;
+    }else{
+        opt.style.display = "flex"
+        slct.style.borderRadius = "5px 5px 0 0";
+    }
 }
 
 function selecionar(){
@@ -88,7 +105,7 @@ function trazerPubli(){
                 var horaPubli = JSON.stringify(json[i].horaPublicacao).replaceAll('"', '');
                 publi.innerHTML += `
                 <div class="post">
-                <h2 style="margin: 0">${usuario}</h2><span style="font-size: .9rem; font-weight: 0;">
+                <h2 class="autorPost">${usuario}</h2><span style="font-size: .9rem; font-weight: 0;">
                 Publicado as ${horaPubli}</span>
                 <br>
                 <br>
@@ -99,6 +116,84 @@ function trazerPubli(){
 
         } else {
             throw ("Houve um erro ao tentar trazer os post!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+function exibirAmigosOn(){
+    var contador = 0;
+
+    fetch("/amigos/exibirOn", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idUsuarioServer: sessionStorage.ID_USUARIO,
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            resposta.json().then((json) => {
+            /* console.log("Tudo certo, publicações trazidas com sucesso!") */
+            console.log(json[0]);
+            /* console.log(JSON.stringify(json.descricao)); */
+            if(json.length > 0){
+                if(json.length != contador){
+                    amg.innerHTML = ""
+                    
+                    for(let i = 0; i < json.length; i++){
+                        var amigo = JSON.stringify(json[i].nome).replaceAll('"', '');
+                        console.log(amigo)
+
+                        amg.innerHTML += `
+                            <p><span class="ball"></span>${amigo}</p>
+                        `
+                    }
+                }
+                contador = json.length;
+            }
+          });
+
+        } else {
+            throw ("Houve um erro ao tentar trazer os amigos!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+    setTimeout(function(){
+        exibirAmigosOn()
+    }, 10000)
+}
+
+function mudarStatusOn(){
+    fetch("/usuarios/mudarStatusOn", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idUsuarioServer: sessionStorage.ID_USUARIO,
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            resposta.json().then((json) => {
+            /* console.log("Tudo certo, publicações trazidas com sucesso!") */
+            console.log(json[0]);
+            /* console.log(JSON.stringify(json.descricao)); */
+            console.log("tudo certo!")
+          });
+
+        } else {
+            throw ("Houve um erro ao tentar mudar o status!");
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);

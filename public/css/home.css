@@ -98,6 +98,21 @@ body {
     overflow-y: scroll;
 }
 
+.headerFeed {
+    width: 100%;
+    height: 28vh;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.containerHeaderFeed {
+    width: 90%;
+    height: 28vh;
+    display: flex;
+    justify-content: center;
+}
+
 .publicacoes {
     width: 100%;
     display: flex;
@@ -106,28 +121,24 @@ body {
 }
 
 .headerPublicar {
-    width: 100%;
-    height: 28vh;
+    width: 60%;
+    height: 26.8vh;
     display: flex;
     justify-content: center;
-    margin-top: 15px;
-    border-bottom: 2px solid #e5e5e5;
-    padding-bottom: 25px;
+    align-items: center;
 }
 
 .containerPublicar {
-    width: 90%;
-    height: 28vh;
+    width: 100%;
+    height: 23.8vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
     font-family: 'Roboto', sans-serif;
 }
 
 #inputPublicacao {
-    width: 98%;
-    height: 20vh;
+    width: 93%;
+    height: 20.5vh;
     outline: 0;
     resize: none;
     border-radius: 5px;
@@ -139,8 +150,7 @@ body {
 }
 
 .publicar {
-    align-self: flex-end;
-    width: 40%;
+    width: 97.5%;
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -155,6 +165,63 @@ body {
     background-color: #adb5bd;
     color: #fff;
     cursor: pointer;
+    margin-right: 10px;
+}
+
+.solicitacoes {
+    width: 39.3%;
+    height: 28vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.containerSolicitacoes {
+    width: 95%;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 3px 6px #00000029, 0 1px 2px #0000003b;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.titleSlc {
+    margin: 10px 0;
+}
+
+.pedidos {
+    width: 100%;
+    height: 70%;
+    border-top: 2px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.pedidos p {
+    font-size: 1.15rem;
+    font-weight: bold;
+    width: 85%;
+    height: 20px;
+    margin: 15px 0 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.iconAccept {
+    cursor: pointer;
+    color: #42b72a;
+    margin-left: 12rem;
+}
+
+.iconDismiss {
+    cursor: pointer;
+    color: red;
+    margin-left: .5rem;
 }
 
 .question {
@@ -165,6 +232,7 @@ body {
     align-items: center;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 3px 6px #00000029, 0 1px 2px #0000003b;
 }
 
 #selection {
@@ -177,10 +245,9 @@ body {
     gap: 10px;
     padding: 16px 10px 10px 10px;
     background-color: #edf6f9;
-    width: 15.75rem;
+    width: 15.7rem;
     box-shadow: 0 3px 6px #00000029, 0 1px 2px #0000003b;
-    margin-top: 10px;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     display: none;
 }
 
@@ -195,7 +262,7 @@ body {
 }
 
 .amigosOn {
-    width: 11%;
+    width: 12%;
     background-color: #fff;
     border-left: 2px solid #e5e5e5;
     display: flex;
@@ -205,7 +272,7 @@ body {
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #495057;
     text-align: center;
 }
@@ -220,8 +287,8 @@ body {
 }
 
 .amigos p {
+    margin: 15px 0 0 16px;
     font-size: 1.1rem;
-    margin-left: 1rem;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -244,6 +311,25 @@ body {
     box-shadow: 0 3px 6px #00000029, 0 1px 2px #0000003b;
 }
 
-::-webkit-scrollbar {
-    width: 0px;
+.autorPost {
+    margin: 0;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #8896b5;
+    border-radius: 10px;
+    border-radius: 10px;
+
+  }

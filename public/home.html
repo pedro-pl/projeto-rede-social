@@ -11,7 +11,7 @@
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>AdvenChat | Home</title>
 </head>
-<body onload="botaoDisabled(), trazerPubli()">
+<body onload="botaoDisabled(), trazerPubli(), exibirAmigosOn(), mudarStatusOn()">
     <div class="container">
         <div class="header">
             <div class="containerHeader">
@@ -34,7 +34,7 @@
                         <li onclick="window.location='profile.html'">Perfil <span class="material-icons" id="iconProfile">
                             person
                             </span></li>
-                        <li onclick="limparSessao()">Sair <span class="material-icons" id="iconLogout">
+                        <li onclick="mudarStatusOff()">Sair <span class="material-icons" id="iconLogout">
                             logout
                             </span></li>
                 </ul>
@@ -42,49 +42,73 @@
         </div>
 
         <div class="containerResults">
-            <div class="feed">
-                <div class="headerPublicar">
-                    <div class="containerPublicar">
-                        <textarea name="publicacao" id="inputPublicacao" placeholder="Que tal publicar algo?!" maxlength="738"></textarea>
-                        <div class="publicar">
-                            <div class="statusPubli">
-                                <p class="question" id="slct" onclick="select()">Quem pode ver está publicação?
-                                    <span class="material-icons" id="selection">
-                                    keyboard_arrow_down
-                                    </span>
-                                </p>
-                                    
-                                <div class="options" id="opt">
-                                    <p>
-                                        <label for="opt1" class="opt">Apenas amigos</label><input type="radio" name="opcoes" value="amigos" id="opt1" class="opt" onclick="selecionar()">
-                                    </p>
-
-                                    <p>
-                                        <label for="opt2" class="opt">Qualquer um</label><input type="radio" name="opcoes" value="todos" id="opt2" class="opt" onclick="selecionar()">
-                                    </p>
-                                    
-                                    <p>
-                                        <label for="opt3" class="opt">Ninguém</label><input type="radio" name="opcoes" value="ninguem" id="opt3" class="opt" onclick="selecionar()">
-                                    </p>
+            <div class="feed" id="fd">
+                <div class="headerFeed">
+                    <div class="containerHeaderFeed">
+                        <div class="headerPublicar">
+                            <div class="containerPublicar">
+                                <textarea name="publicacao" id="inputPublicacao" placeholder="Que tal publicar algo?!" maxlength="340"></textarea>
+                                <div class="publicar">
+                                    <div class="statusPubli">
+                                        <p class="question" id="slct    " onclick="select()">Quem pode ver está publicação?
+                                            <span class="material-icons" id="selection">
+                                            keyboard_arrow_down
+                                            </span>
+                                        </p>
+                                            
+                                        <div class="options" id="opt">
+                                            <p>
+                                                <label for="opt1" class="opt">Apenas amigos</label><input type="radio" name="opcoes" value="amigos" id="opt1" class="opt" onclick="selecionar()">
+                                            </p>
+        
+                                            <p>
+                                                <label for="opt2" class="opt">Qualquer um</label><input type="radio" name="opcoes" value="todos" id="opt2" class="opt" onclick="selecionar()">
+                                            </p>
+                                            
+                                            <p>
+                                                <label for="opt3" class="opt">Ninguém</label><input type="radio" name="opcoes" value="ninguem" id="opt3" class="opt" onclick="selecionar()">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button class="btnPostar" id="btn" onclick="postar()">Postar</button>
+        
+                                    <!-- <div>wi</div> -->
                                 </div>
                             </div>
-                            <button class="btnPostar" id="btn" onclick="postar()">Postar</button>
+                        </div>
+
+                        <div class="solicitacoes">
+                            <div class="containerSolicitacoes">
+                                <h2 class="titleSlc">Solicitações de amizade</h2>
+                                <div class="pedidos">
+                                    <p>Vinicius A <span class="material-icons iconAccept" onclick="">
+                                        done
+                                        </span>
+                                        <span class="material-icons iconDismiss" onclick="">
+                                            close
+                                            </span>
+                                    </p>
+                                    
+                                    <p>Samuel V <span class="material-icons iconAccept" onclick="">
+                                        done
+                                        </span>
+                                        <span class="material-icons iconDismiss" onclick="">
+                                            close
+                                            </span>
+                                    </p>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="publicacoes" id="publi">
                 </div>
             </div>
 
             <div class="amigosOn">
                 <h1 class="title">Amigos Online</h1>
-                <div class="amigos">
-                    <p><span class="ball"></span> Pedro Lucas</p>
-                    <p><span class="ball"></span> Maria Eduarda</p>
-                    <p><span class="ball"></span> Vinicius A</p>
-                    <p><span class="ball"></span> Ariany</p>
-                    <p><span class="ball"></span> Kaylainne F</p>
+                <div class="amigos" id="amg">
                 </div>
             </div>
         </div>
@@ -93,8 +117,3 @@
 </html>
 <script src="js/funcoes.js"></script>
 <script src="js/home.js"></script>
-<script>
-    /* document.addEventListener('scroll', function(){
-        alert("oii")
-    }); */
-</script>
