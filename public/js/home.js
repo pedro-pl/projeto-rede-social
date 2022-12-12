@@ -35,12 +35,6 @@ function selecionar(){
                 document.getElementById("btn").disabled = false;
                 btn.style.backgroundColor = "#42b72a"
             }, 100)
-        }else if(document.getElementById('opt3').checked){
-            setTimeout(function(){
-                option = opt3.value
-                document.getElementById("btn").disabled = false;
-                btn.style.backgroundColor = "#42b72a"
-            }, 100)
         }
 }
 
@@ -84,48 +78,9 @@ function postar(){
 }
 
 function trazerPubli(){
-    publi.innerHTML = ""
-    fetch("/publicacao/trazerPubli", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-    }).then(function (resposta) {
-
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-            resposta.json().then((json) => {
-            /* console.log("Tudo certo, publicações trazidas com sucesso!") */
-            console.log(json[0]);
-            /* console.log(JSON.stringify(json.descricao)); */
-            for(let i = 0; i < json.length; i++){
-                var usuario = JSON.stringify(json[i].nome).replaceAll('"', '');
-                var publicacaoFormatada = JSON.stringify(json[i].descricao).replaceAll('"', '');
-                var horaPubli = JSON.stringify(json[i].horaPublicacao).replaceAll('"', '');
-                publi.innerHTML += `
-                <div class="post">
-                <h2 class="autorPost">${usuario}</h2><span style="font-size: .9rem; font-weight: 0;">
-                Publicado as ${horaPubli}</span>
-                <br>
-                <br>
-                <p style="margin: 0; font-size: 1.4rem;">${publicacaoFormatada}</p>
-                </div>`
-            }
-          });
-
-        } else {
-            throw ("Houve um erro ao tentar trazer os post!");
-        }
-    }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-    });
-}
-
-function exibirAmigosOn(){
     var contador = 0;
 
-    fetch("/amigos/exibirOn", {
+    fetch("/publicacao/trazerPubli", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -144,30 +99,34 @@ function exibirAmigosOn(){
             /* console.log(JSON.stringify(json.descricao)); */
             if(json.length > 0){
                 if(json.length != contador){
-                    amg.innerHTML = ""
-                    
-                    for(let i = 0; i < json.length; i++){
-                        var amigo = JSON.stringify(json[i].nome).replaceAll('"', '');
-                        console.log(amigo)
+                    publi.innerHTML = ""
 
-                        amg.innerHTML += `
-                            <p><span class="ball"></span>${amigo}</p>
-                        `
+                    for(let i = 0; i < json.length; i++){
+                        var usuario = JSON.stringify(json[i].nome).replaceAll('"', '');
+                        var publicacaoFormatada = JSON.stringify(json[i].descricao).replaceAll('"', '');
+                        var horaPubli = JSON.stringify(json[i].horaPublicacao).replaceAll('"', '');
+                        publi.innerHTML += `
+                        <div class="post">
+                        <h2 class="autorPost">${usuario}</h2><span style="font-size: .9rem; font-weight: 0;">
+                        Publicado as ${horaPubli}</span>
+                        <br>
+                        <br>
+                        <p style="margin: 0; font-size: 1.4rem;">${publicacaoFormatada}</p>
+                        </div>`
                     }
                 }
-                contador = json.length;
             }
           });
 
         } else {
-            throw ("Houve um erro ao tentar trazer os amigos!");
+            throw ("Houve um erro ao tentar trazer os post!");
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
     });
 
     setTimeout(function(){
-        exibirAmigosOn()
+        trazerPubli()
     }, 10000)
 }
 

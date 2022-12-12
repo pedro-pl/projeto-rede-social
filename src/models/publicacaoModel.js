@@ -9,12 +9,17 @@ var database = require("../database/config")
     return database.executar(instrucao);
 } */
 
-function trazerPubli() {
+function trazerPubli(usuario) {
     var instrucao = `
-    SELECT pub.descricao, time_format(pub.horaPublicacao, '%h:%i') AS horaPublicacao, usu.nome 
+    SELECT pub.descricao, pub.statusPublicacao as status, time_format(pub.horaPublicacao, '%H:%i') AS horaPublicacao, usu.nome, amg.fk_usuario, amg.fk_amigo
     FROM publicacao AS pub 
-    JOIN usuario AS usu
+    LEFT JOIN usuario AS usu
     ON pub.fk_usuario = usu.id
+    JOIN amigos AS amg
+    on amg.fk_amigo = usu.id
+    WHERE amg.fk_usuario = ${usuario} || amg.fk_amigo = ${usuario}
+    AND pub.statusPublicacao = 'amigos' || pub.statusPublicacao = 'todos'
+    GROUP BY pub.id
     ORDER BY pub.id DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

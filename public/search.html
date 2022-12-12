@@ -8,9 +8,10 @@
     <link rel="icon" href="assets/logo-site.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>GetPet | Procurar</title>
 </head>
-<body>
+<body onload="exibirAmigosOn()">
     <div class="container">
         <div class="header">
             <div class="containerHeader">
@@ -40,10 +41,31 @@
             </div>
         </div>
 
-        <div class="containerResults">
+        <div class="containerResults" id="cont">
+            <div class="busca">
+                <div class="containerBusca">
+                    <div class="pesquisar">
+                        <input type="text" placeholder="Pesquisar usuário..." id="inputPesquisa">
+                        <span class="material-icons" id="search" onclick="pesquisarUsuario()" onselectstart="return false">
+                            search
+                            </span>
+                    </div>
+                </div>
 
+                <div class="resultados">
+                    <div class="containerResultados" id="result">
+                    </div>
+                </div>
+            </div>
+
+            <div class="amigosOn">
+                <h1 class="title">Amigos Online</h1>
+                <div class="amigos" id="amg">
+                </div>
+            </div>
         </div>
     </div>
 </body>
 </html>
 <script src="js/funcoes.js"></script>
+<script src="js/search.js"></script>

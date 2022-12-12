@@ -8,7 +8,7 @@
     <link rel="icon" href="assets/logo-site.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>AdvenChat | Home</title>
 </head>
 <body onload="botaoDisabled(), trazerPubli(), exibirAmigosOn(), mudarStatusOn()">
@@ -46,11 +46,11 @@
                 <div class="headerFeed">
                     <div class="containerHeaderFeed">
                         <div class="headerPublicar">
-                            <div class="containerPublicar">
+                            <div class="containerPublicar"> 
                                 <textarea name="publicacao" id="inputPublicacao" placeholder="Que tal publicar algo?!" maxlength="340"></textarea>
                                 <div class="publicar">
                                     <div class="statusPubli">
-                                        <p class="question" id="slct    " onclick="select()">Quem pode ver está publicação?
+                                        <p class="question" id="slct" onclick="select()">Quem pode ver está publicação?
                                             <span class="material-icons" id="selection">
                                             keyboard_arrow_down
                                             </span>
@@ -63,10 +63,6 @@
         
                                             <p>
                                                 <label for="opt2" class="opt">Qualquer um</label><input type="radio" name="opcoes" value="todos" id="opt2" class="opt" onclick="selecionar()">
-                                            </p>
-                                            
-                                            <p>
-                                                <label for="opt3" class="opt">Ninguém</label><input type="radio" name="opcoes" value="ninguem" id="opt3" class="opt" onclick="selecionar()">
                                             </p>
                                         </div>
                                     </div>

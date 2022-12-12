@@ -20,4 +20,8 @@ router.post("/mudarStatusOff", function (req, res) {
     usuarioController.mudarStatusOff(req, res);
 });
 
+router.post("/pesquisar", function (req, res) {
+    usuarioController.pesquisar(req, res);
+});
+
 module.exports = router;

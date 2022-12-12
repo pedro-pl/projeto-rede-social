@@ -25,9 +25,10 @@ function testar(req, res) {
 } */
 
 function trazerPubli(req, res) {
+    var usuario = req.body.idUsuarioServer;
     console.log(`Recuperando oas últimas publicações`);
 
-    publicacaoModel.trazerPubli().then(function (resultado) {
+    publicacaoModel.trazerPubli(usuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

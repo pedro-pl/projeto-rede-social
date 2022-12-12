@@ -28,7 +28,7 @@ fk_amigo int,
 foreign key (fk_usuario) references usuario(id),
 foreign key (fk_amigo) references usuario(id));
 
-INSERT INTO amigos (fk_usuario, fk_amigo) VALUES (2, 3);
+INSERT INTO amigos (fk_usuario, fk_amigo) VALUES (4, 2);
 
 SELECT * FROM amigos;
 
@@ -80,5 +80,18 @@ ON ami.fk_amigo = amg.id
 WHERE ami.fk_usuario = 1
 AND amg.statusUsuario = 'online'
 ORDER BY amg.nome;
+
+SELECT pub.descricao, pub.statusPublicacao as status, time_format(pub.horaPublicacao, '%H:%i') AS horaPublicacao, usu.nome, amg.fk_usuario, amg.fk_amigo
+FROM publicacao AS pub 
+LEFT JOIN usuario AS usu
+ON pub.fk_usuario = usu.id
+JOIN amigos AS amg
+on amg.fk_amigo = usu.id
+WHERE amg.fk_usuario = 2 || amg.fk_amigo = 2
+AND pub.statusPublicacao = 'amigos' || pub.statusPublicacao = 'todos'
+GROUP BY pub.id
+ORDER BY pub.id DESC;
+
+select nome, email, statusUsuario from usuario where email = 'Pedro' || nome = 'Pedro';
 
 truncate table publicacao;
