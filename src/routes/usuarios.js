@@ -24,4 +24,20 @@ router.post("/pesquisar", function (req, res) {
     usuarioController.pesquisar(req, res);
 });
 
+router.post("/enviarPedido", function (req, res) {
+    usuarioController.enviarPedido(req, res);
+});
+
+router.post("/exibirPedidos", function (req, res) {
+    usuarioController.exibirPedidos(req, res);
+});
+
+router.post("/aceitarPedido", function (req, res) {
+    usuarioController.aceitarPedido(req, res);
+});
+
+router.post("/negarPedido", function (req, res) {
+    usuarioController.negarPedido(req, res);
+});
+
 module.exports = router;

@@ -211,10 +211,11 @@ body {
     margin: 0;
 }
 
-.usuario h1 {
+.usuario h2 {
     margin: 0;
-    height: 3.5rem;
+    height: 2.5rem;
     display: flex;
+    align-items: center;
 }
 
 .usuario h3 {
@@ -239,7 +240,7 @@ body {
     height: 12px;   
     border-radius: 50px;
     margin-left: 7px;
-    margin-top: 1.4rem;
+    margin-top: .2rem;
 }
 
 /* width */

@@ -11,7 +11,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>AdvenChat | Home</title>
 </head>
-<body onload="botaoDisabled(), trazerPubli(), exibirAmigosOn(), mudarStatusOn()">
+<body onload="botaoDisabled(), trazerPubli(), exibirAmigosOn(), mudarStatusOn(), exibirPedidos()">
     <div class="container">
         <div class="header">
             <div class="containerHeader">
@@ -76,23 +76,7 @@
                         <div class="solicitacoes">
                             <div class="containerSolicitacoes">
                                 <h2 class="titleSlc">Solicitações de amizade</h2>
-                                <div class="pedidos">
-                                    <p>Vinicius A <span class="material-icons iconAccept" onclick="">
-                                        done
-                                        </span>
-                                        <span class="material-icons iconDismiss" onclick="">
-                                            close
-                                            </span>
-                                    </p>
-                                    
-                                    <p>Samuel V <span class="material-icons iconAccept" onclick="">
-                                        done
-                                        </span>
-                                        <span class="material-icons iconDismiss" onclick="">
-                                            close
-                                            </span>
-                                    </p>
-
+                                <div class="pedidos" id="ped">
                                 </div>
                             </div>
                         </div>

@@ -128,10 +128,95 @@ function cadastrar(req, res) {
     }
 }
 
+function enviarPedido(req, res){
+    var idPedido = req.body.idPedidoServer;
+    var idUsuario = req.body.idUsuarioServer;
+
+    usuarioModel.enviarPedido(idPedido, idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao enviar o pedido! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+
+function exibirPedidos(req, res){
+    var idUsuario = req.body.idUsuarioServer;
+    usuarioModel.exibirPedidos(idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao exibir os pedidos! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+
+function aceitarPedido(req, res){
+    var idUsuario = req.body.idUsuarioServer;
+    var idUserPedido = req.body.idUsuarioPedidoServer;
+
+    usuarioModel.aceitarPedido(idUsuario, idUserPedido)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao aceitar o pedido! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+
+function negarPedido(req, res){
+    var idPedido = req.body.idPedidoServer;
+
+    usuarioModel.negarPedido(idPedido)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao negar o pedido! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+
 module.exports = {
     entrar,
     cadastrar,
     mudarStatusOn,
     mudarStatusOff,
-    pesquisar
+    pesquisar,
+    enviarPedido,
+    exibirPedidos,
+    aceitarPedido,
+    negarPedido
 }
