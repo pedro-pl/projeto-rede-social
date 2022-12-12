@@ -11,7 +11,7 @@ var database = require("../database/config")
 
 function trazerPubli(usuario) {
     var instrucao = `
-    SELECT pub.descricao, pub.statusPublicacao as status, time_format(pub.horaPublicacao, '%H:%i') AS horaPublicacao, usu.nome, amg.fk_usuario, amg.fk_amigo
+    SELECT pub.descricao, pub.statusPublicacao as status, time_format(pub.horaPublicacao, '%H:%i') AS horaPublicacao, usu.nome
     FROM publicacao AS pub 
     LEFT JOIN usuario AS usu
     ON pub.fk_usuario = usu.id

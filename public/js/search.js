@@ -22,7 +22,7 @@ function pesquisarUsuario(){
 
         if (resposta.ok) {
             Swal.fire({
-                title: `Pesquisando..`,
+                title: `<h3  style="font-family: Roboto, sans-serif;">Pesquisando...</h3>`,
                 toast: true,
                 showConfirmButton: false,
                 timer: 800
